@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+<!-- 设置mssql驱动路径 -->    
+<classPathEntry location="C:/Users/Administrator/.m2/repository/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar" />   
+  
+  <context id="ms_sqlserver" targetRuntime="MyBatis3" defaultModelType="flat">
+    
+    <!-- 不生成注释 -->
+    <commentGenerator>
+    	<property name="suppressDate" value="true"/>
+    	<property name="suppressAllComments" value="true"/>
+    </commentGenerator>
+    
+    <!-- jdbc连接信息 -->
+    <jdbcConnection connectionURL="jdbc:mysql://bdm262241637.my3w.com:3306/bdm262241637_db" driverClass="com.mysql.jdbc.Driver" password="lihao0529" userId="bdm262241637" />
+    
+    <!-- 生成vo对象 -->
+    <javaModelGenerator targetPackage="yiranlihao.learn.springmvc.entity" targetProject="yiranlihao" />  
+    
+    <!-- 生成用于查询的Example对象    -->  
+    <sqlMapGenerator targetPackage="yiranlihao.learn.springmvc.entity" targetProject="yiranlihao" />   
+   
+    <!-- 生成DAO的类文件以及配置文件 -->    
+    <javaClientGenerator targetPackage="yiranlihao.learn.springmvc.dao" targetProject="yiranlihao" type="XMLMAPPER" />  
+    
+    <!-- 想要生成的数据库表,自动化工具会根据该表的结构生成相应的vo对象 -->    
+    
+    <!-- <table schema="dbo" tableName="base_invoice" >  
+      <columnOverride column="???" property="???" />
+    </table> -->
+	<table schema="bdm262241637_db" tableName="user_t" domainObjectName="user" 
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false" >
+	    <!-- <property name="useActualColumnNames" value="true"/> -->
+	</table>
+  </context>
+</generatorConfiguration>
+
