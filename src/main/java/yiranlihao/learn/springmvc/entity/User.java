@@ -1,7 +1,7 @@
 package yiranlihao.learn.springmvc.entity;
 
 public class User {
-    private Integer id;//id
+    private Integer id;
 
     private String userName;//ĞÕÃû
 
