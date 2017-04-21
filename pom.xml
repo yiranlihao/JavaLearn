@@ -166,7 +166,17 @@
 		    <artifactId>jedis</artifactId>
 		    <version>2.9.0</version>
 		</dependency>
-				
+		<!--七牛云存储-->
+		<dependency>
+		    <groupId>com.qiniu</groupId>
+		    <artifactId>sdk</artifactId>
+		    <version>6.1.9</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
+		    <version>4.3.1</version>
+		</dependency>	
 	</dependencies>
 	<build>
 		<finalName>yiranlihao</finalName>
