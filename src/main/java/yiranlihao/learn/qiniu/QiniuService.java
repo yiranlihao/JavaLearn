@@ -8,6 +8,7 @@ import java.security.GeneralSecurityException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLException;
@@ -134,6 +135,46 @@ public class QiniuService {
 				// 识别完成之后，删除本地存储的图像文件
 				//storeFile.delete();
 
+			} else {
+				logger.error("从远程服务器获取图片文件失败，请检查图片URL是否正确....");
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage(),e);
+		}
+		return result;
+	}
+	public String uploadFileByUrl1(String fileURL) throws Exception {
+
+		String result = fileURL;
+		try {
+			CloseableHttpClient httpclient = HttpClients.custom().setSSLSocketFactory(createSSLConnSocketFactory())
+					.setConnectionManager(connMgr).setDefaultRequestConfig(requestConfig).build();// 此方法用于https请求
+			// 创建httpget.
+			HttpGet httpget = new HttpGet(fileURL);
+			httpget.setConfig(requestConfig);
+			//System.out.println("executing request " + httpget.getURI());
+			// 执行get请求.
+			CloseableHttpResponse response = httpclient.execute(httpget);
+			// 获取响应实体
+			HttpEntity entity = response.getEntity();
+
+			if (entity != null) {
+				String[] strs = fileURL.split("/");
+				String fileName = strs[strs.length-1];
+				fileName =UUID.randomUUID().toString().replace("-", "")+"-"+fileName;
+//				File storeFile = new File(fileName);
+//				FileOutputStream output = new FileOutputStream(storeFile);
+//				entity.writeTo(output);
+//				output.close();
+				logger.info("成功从远程服务器拿到图片文件，上传到七牛服务器....");
+				boolean flag = uploadFile(fileName, entity.getContent());
+				// 识别完成之后，删除本地存储的图像文件
+				//storeFile.delete();
+				if(flag){
+					//上传成功。返回地址
+					String filePath = getDownloadFileUrl(fileName);
+					result = filePath.substring(0, filePath.lastIndexOf("?"));
+				}
 			} else {
 				logger.error("从远程服务器获取图片文件失败，请检查图片URL是否正确....");
 			}
