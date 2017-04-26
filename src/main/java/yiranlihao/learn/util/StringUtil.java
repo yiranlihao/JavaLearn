@@ -7,23 +7,23 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * ¹¦ÄÜÃèÊö£º¹ØÓÚ×Ö·û´®µÄÒ»Ğ©ÊµÓÃ²Ù×÷
+ * åŠŸèƒ½æè¿°ï¼šå…³äºå­—ç¬¦ä¸²çš„ä¸€äº›å®ç”¨æ“ä½œ
  * 
  * @author Lihao
- * @Date 2017Äê4ÔÂ25ÈÕ
+ * @Date 2017å¹´4æœˆ25æ—¥
  * @Time 10:27:06
  * @version 1.0
  */
 public class StringUtil {
 
 	/**
-	 * ¹¦ÄÜÃèÊö£º·Ö¸î×Ö·û´®
+	 * åŠŸèƒ½æè¿°ï¼šåˆ†å‰²å­—ç¬¦ä¸²
 	 * 
 	 * @param str
-	 *            String Ô­Ê¼×Ö·û´®
+	 *            String åŸå§‹å­—ç¬¦ä¸²
 	 * @param splitsign
-	 *            String ·Ö¸ô·û
-	 * @return String[] ·Ö¸îºóµÄ×Ö·û´®Êı×é
+	 *            String åˆ†éš”ç¬¦
+	 * @return String[] åˆ†å‰²åçš„å­—ç¬¦ä¸²æ•°ç»„
 	 */
 	public static String[] split(String str, String splitsign) {
 		int index;
@@ -40,15 +40,15 @@ public class StringUtil {
 	}
 
 	/**
-	 * ¹¦ÄÜÃèÊö£ºÌæ»»×Ö·û´®
+	 * åŠŸèƒ½æè¿°ï¼šæ›¿æ¢å­—ç¬¦ä¸²
 	 * 
 	 * @param from
-	 *            String Ô­Ê¼×Ö·û´®
+	 *            String åŸå§‹å­—ç¬¦ä¸²
 	 * @param to
-	 *            String Ä¿±ê×Ö·û´®
+	 *            String ç›®æ ‡å­—ç¬¦ä¸²
 	 * @param source
-	 *            String Ä¸×Ö·û´®
-	 * @return String Ìæ»»ºóµÄ×Ö·û´®
+	 *            String æ¯å­—ç¬¦ä¸²
+	 * @return String æ›¿æ¢åçš„å­—ç¬¦ä¸²
 	 */
 	public static String replace(String from, String to, String source) {
 		if (source == null || from == null || to == null)
@@ -65,11 +65,11 @@ public class StringUtil {
 	}
 
 	/**
-	 * Ìæ»»×Ö·û´®£¬ÄÜÄÜ¹»ÔÚHTMLÒ³ÃæÉÏÖ±½ÓÏÔÊ¾(Ìæ»»Ë«ÒıºÅºÍĞ¡ÓÚºÅ)
+	 * æ›¿æ¢å­—ç¬¦ä¸²ï¼Œèƒ½èƒ½å¤Ÿåœ¨HTMLé¡µé¢ä¸Šç›´æ¥æ˜¾ç¤º(æ›¿æ¢åŒå¼•å·å’Œå°äºå·)
 	 * 
 	 * @param str
-	 *            String Ô­Ê¼×Ö·û´®
-	 * @return String Ìæ»»ºóµÄ×Ö·û´®
+	 *            String åŸå§‹å­—ç¬¦ä¸²
+	 * @return String æ›¿æ¢åçš„å­—ç¬¦ä¸²
 	 */
 	public static String htmlencode(String str) {
 		if (str == null) {
@@ -79,7 +79,7 @@ public class StringUtil {
 	}
 
 	/**
-	 * Ìæ»»×Ö·û´®£¬½«±»±àÂëµÄ×ª»»³ÉÔ­Ê¼Âë£¨Ìæ»»³ÉË«ÒıºÅºÍĞ¡ÓÚºÅ£©
+	 * æ›¿æ¢å­—ç¬¦ä¸²ï¼Œå°†è¢«ç¼–ç çš„è½¬æ¢æˆåŸå§‹ç ï¼ˆæ›¿æ¢æˆåŒå¼•å·å’Œå°äºå·ï¼‰
 	 * 
 	 * @param str
 	 *            String
@@ -95,11 +95,11 @@ public class StringUtil {
 	private static final String _BR = "<br/>";
 
 	/**
-	 * ¹¦ÄÜÃèÊö£ºÔÚÒ³ÃæÉÏÖ±½ÓÏÔÊ¾ÎÄ±¾ÄÚÈİ£¬Ìæ»»Ğ¡ÓÚºÅ£¬¿Õ¸ñ£¬»Ø³µ£¬TAB
+	 * åŠŸèƒ½æè¿°ï¼šåœ¨é¡µé¢ä¸Šç›´æ¥æ˜¾ç¤ºæ–‡æœ¬å†…å®¹ï¼Œæ›¿æ¢å°äºå·ï¼Œç©ºæ ¼ï¼Œå›è½¦ï¼ŒTAB
 	 * 
 	 * @param str
-	 *            String Ô­Ê¼×Ö·û´®
-	 * @return String Ìæ»»ºóµÄ×Ö·û´®
+	 *            String åŸå§‹å­—ç¬¦ä¸²
+	 * @return String æ›¿æ¢åçš„å­—ç¬¦ä¸²
 	 */
 	public static String htmlshow(String str) {
 		if (str == null) {
@@ -115,13 +115,13 @@ public class StringUtil {
 	}
 
 	/**
-	 * ¹¦ÄÜÃèÊö£º·µ»ØÖ¸¶¨×Ö½Ú³¤¶ÈµÄ×Ö·û´®
+	 * åŠŸèƒ½æè¿°ï¼šè¿”å›æŒ‡å®šå­—èŠ‚é•¿åº¦çš„å­—ç¬¦ä¸²
 	 * 
 	 * @param str
-	 *            String ×Ö·û´®
+	 *            String å­—ç¬¦ä¸²
 	 * @param length
-	 *            int Ö¸¶¨³¤¶È
-	 * @return String ·µ»ØµÄ×Ö·û´®
+	 *            int æŒ‡å®šé•¿åº¦
+	 * @return String è¿”å›çš„å­—ç¬¦ä¸²
 	 */
 	public static String toLength(String str, int length) {
 		if (str == null) {
@@ -157,9 +157,9 @@ public class StringUtil {
 	}
 
 	/**
-	 * ¹¦ÄÜÃèÊö£ºÅĞ¶ÏÊÇ·ñÎªÕûÊı
-	 * @param str ´«ÈëµÄ×Ö·û´®
-	 * @return ÊÇÕûÊı·µ»Øtrue,·ñÔò·µ»Øfalse
+	 * åŠŸèƒ½æè¿°ï¼šåˆ¤æ–­æ˜¯å¦ä¸ºæ•´æ•°
+	 * @param str ä¼ å…¥çš„å­—ç¬¦ä¸²
+	 * @return æ˜¯æ•´æ•°è¿”å›true,å¦åˆ™è¿”å›false
 	 */
 	public static boolean isInteger(String str) {
 		Pattern pattern = Pattern.compile("^[-\\+]?[\\d]+$");
@@ -167,11 +167,11 @@ public class StringUtil {
 	}
 
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÎª¸¡µãÊı£¬°üÀ¨doubleºÍfloat
+	 * åˆ¤æ–­æ˜¯å¦ä¸ºæµ®ç‚¹æ•°ï¼ŒåŒ…æ‹¬doubleå’Œfloat
 	 * 
 	 * @param str
-	 *            ´«ÈëµÄ×Ö·û´®
-	 * @return ÊÇ¸¡µãÊı·µ»Øtrue,·ñÔò·µ»Øfalse
+	 *            ä¼ å…¥çš„å­—ç¬¦ä¸²
+	 * @return æ˜¯æµ®ç‚¹æ•°è¿”å›true,å¦åˆ™è¿”å›false
 	 */
 	public static boolean isDouble(String str) {
 		Pattern pattern = Pattern.compile("^[-\\+]?\\d+\\.\\d+$");
@@ -179,7 +179,7 @@ public class StringUtil {
 	}
 
 	/**
-	 * ÅĞ¶ÏÊÇ²»ÊÇºÏ·¨×Ö·û c ÒªÅĞ¶ÏµÄ×Ö·û
+	 * åˆ¤æ–­æ˜¯ä¸æ˜¯åˆæ³•å­—ç¬¦ c è¦åˆ¤æ–­çš„å­—ç¬¦
 	 */
 	public static boolean isLetter(String str) {
 		if (str == null || str.length() < 0) {
@@ -190,7 +190,7 @@ public class StringUtil {
 	}
 
 	/**
-	 * ´ÓÖ¸¶¨µÄ×Ö·û´®ÖĞÌáÈ¡Email content Ö¸¶¨µÄ×Ö·û´®
+	 * ä»æŒ‡å®šçš„å­—ç¬¦ä¸²ä¸­æå–Email content æŒ‡å®šçš„å­—ç¬¦ä¸²
 	 * @param content
 	 * @return
 	 */
@@ -199,7 +199,7 @@ public class StringUtil {
 		if (content == null || content.length() < 1) {
 			return email;
 		}
-		// ÕÒ³öº¬ÓĞ@
+		// æ‰¾å‡ºå«æœ‰@
 		int beginPos;
 		int i;
 		String token = "@";
@@ -208,7 +208,7 @@ public class StringUtil {
 
 		beginPos = content.indexOf(token);
 		if (beginPos > -1) {
-			// Ç°ÏîÉ¨Ãè
+			// å‰é¡¹æ‰«æ
 			String s = null;
 			i = beginPos;
 			while (i > 0) {
@@ -219,7 +219,7 @@ public class StringUtil {
 					break;
 				i--;
 			}
-			// ºóÏîÉ¨Ãè
+			// åé¡¹æ‰«æ
 			i = beginPos + 1;
 			while (i < content.length()) {
 				s = content.substring(i, i + 1);
@@ -229,7 +229,7 @@ public class StringUtil {
 					break;
 				i++;
 			}
-			// ÅĞ¶ÏºÏ·¨ĞÔ
+			// åˆ¤æ–­åˆæ³•æ€§
 			email = preHalf + "@" + sufHalf;
 			if (isEmail(email)) {
 				return email;
@@ -239,9 +239,9 @@ public class StringUtil {
 	}
 
 	/**
-	 * ¹¦ÄÜÃèÊö£ºÅĞ¶ÏÊäÈëµÄ×Ö·û´®ÊÇ·ñ·ûºÏEmailÑùÊ½.
-	 * @param str ´«ÈëµÄ×Ö·û´®
-	 * @return ÊÇEmailÑùÊ½·µ»Øtrue,·ñÔò·µ»Øfalse
+	 * åŠŸèƒ½æè¿°ï¼šåˆ¤æ–­è¾“å…¥çš„å­—ç¬¦ä¸²æ˜¯å¦ç¬¦åˆEmailæ ·å¼.
+	 * @param str ä¼ å…¥çš„å­—ç¬¦ä¸²
+	 * @return æ˜¯Emailæ ·å¼è¿”å›true,å¦åˆ™è¿”å›false
 	 */
 	public static boolean isEmail(String email) {
 		if (email == null || email.length() < 1 || email.length() > 256) {
@@ -252,9 +252,9 @@ public class StringUtil {
 	}
 
 	/**
-	 * ¹¦ÄÜÃèÊö£ºÅĞ¶ÏÊäÈëµÄ×Ö·û´®ÊÇ·ñÎª´¿ºº×Ö
-	 * @param str ´«ÈëµÄ×Ö·û´Ü
-	 * @return Èç¹ûÊÇ´¿ºº×Ö·µ»Øtrue,·ñÔò·µ»Øfalse
+	 * åŠŸèƒ½æè¿°ï¼šåˆ¤æ–­è¾“å…¥çš„å­—ç¬¦ä¸²æ˜¯å¦ä¸ºçº¯æ±‰å­—
+	 * @param str ä¼ å…¥çš„å­—ç¬¦çªœ
+	 * @return å¦‚æœæ˜¯çº¯æ±‰å­—è¿”å›true,å¦åˆ™è¿”å›false
 	 */
 	public static boolean isChinese(String str) {
 		Pattern pattern = Pattern.compile("[\u0391-\uFFE5]+$");
@@ -262,7 +262,7 @@ public class StringUtil {
 	}
 
 	/**
-	 * ¹¦ÄÜÃèÊö£ºÊÇ·ñÎª¿Õ°×,°üÀ¨nullºÍ""
+	 * åŠŸèƒ½æè¿°ï¼šæ˜¯å¦ä¸ºç©ºç™½,åŒ…æ‹¬nullå’Œ""
 	 * @param str
 	 * @return
 	 */
@@ -271,7 +271,7 @@ public class StringUtil {
 	}
 
 	/**
-	 * ¹¦ÄÜÃèÊö£ºÅĞ¶ÏÊÇ·ñÎªÖÊÊı
+	 * åŠŸèƒ½æè¿°ï¼šåˆ¤æ–­æ˜¯å¦ä¸ºè´¨æ•°
 	 * @param x
 	 * @return
 	 */
@@ -326,9 +326,9 @@ public class StringUtil {
 	}
 
 	/**
-	 * ¹¦ÄÜÃèÊö£ºÈËÃñ±Ò×ª³É´óĞ´
-	 * @param str Êı×Ö×Ö·û´®
-	 * @return String ÈËÃñ±Ò×ª»»³É´óĞ´ºóµÄ×Ö·û´®
+	 * åŠŸèƒ½æè¿°ï¼šäººæ°‘å¸è½¬æˆå¤§å†™
+	 * @param str æ•°å­—å­—ç¬¦ä¸²
+	 * @return String äººæ°‘å¸è½¬æ¢æˆå¤§å†™åçš„å­—ç¬¦ä¸²
 	 */
 	public static String hangeToBig(String str) {
 		double value;
@@ -337,33 +337,33 @@ public class StringUtil {
 		} catch (Exception e) {
 			return null;
 		}
-		char[] hunit = { 'Ê°', '°Û', 'Çª' }; // ¶ÎÄÚÎ»ÖÃ±íÊ¾
-		char[] vunit = { 'Íò', 'ÒÚ' }; // ¶ÎÃû±íÊ¾
-		char[] digit = { 'Áã', 'Ò¼', '·¡', 'Èş', 'ËÁ', 'Îé', 'Â½', 'Æâ', '°Æ', '¾Á' }; // Êı×Ö±íÊ¾
-		long midVal = (long) (value * 100); // ×ª»¯³ÉÕûĞÎ
-		String valStr = String.valueOf(midVal); // ×ª»¯³É×Ö·û´®
+		char[] hunit = { 'æ‹¾', 'ä½°', 'ä»Ÿ' }; // æ®µå†…ä½ç½®è¡¨ç¤º
+		char[] vunit = { 'ä¸‡', 'äº¿' }; // æ®µåè¡¨ç¤º
+		char[] digit = { 'é›¶', 'å£¹', 'è´°', 'å', 'è‚†', 'ä¼', 'é™†', 'æŸ’', 'æŒ', 'ç–' }; // æ•°å­—è¡¨ç¤º
+		long midVal = (long) (value * 100); // è½¬åŒ–æˆæ•´å½¢
+		String valStr = String.valueOf(midVal); // è½¬åŒ–æˆå­—ç¬¦ä¸²
 
-		String head = valStr.substring(0, valStr.length() - 2); // È¡ÕûÊı²¿·Ö
-		String rail = valStr.substring(valStr.length() - 2); // È¡Ğ¡Êı²¿·Ö
+		String head = valStr.substring(0, valStr.length() - 2); // å–æ•´æ•°éƒ¨åˆ†
+		String rail = valStr.substring(valStr.length() - 2); // å–å°æ•°éƒ¨åˆ†
 
-		String prefix = ""; // ÕûÊı²¿·Ö×ª»¯µÄ½á¹û
-		String suffix = ""; // Ğ¡Êı²¿·Ö×ª»¯µÄ½á¹û
-		// ´¦ÀíĞ¡ÊıµãºóÃæµÄÊı
-		if (rail.equals("00")) { // Èç¹ûĞ¡Êı²¿·ÖÎª0
-			suffix = "Õû";
+		String prefix = ""; // æ•´æ•°éƒ¨åˆ†è½¬åŒ–çš„ç»“æœ
+		String suffix = ""; // å°æ•°éƒ¨åˆ†è½¬åŒ–çš„ç»“æœ
+		// å¤„ç†å°æ•°ç‚¹åé¢çš„æ•°
+		if (rail.equals("00")) { // å¦‚æœå°æ•°éƒ¨åˆ†ä¸º0
+			suffix = "æ•´";
 		} else {
-			suffix = digit[rail.charAt(0) - '0'] + "½Ç" + digit[rail.charAt(1) - '0'] + "·Ö"; // ·ñÔò°Ñ½Ç·Ö×ª»¯³öÀ´
+			suffix = digit[rail.charAt(0) - '0'] + "è§’" + digit[rail.charAt(1) - '0'] + "åˆ†"; // å¦åˆ™æŠŠè§’åˆ†è½¬åŒ–å‡ºæ¥
 		}
-		// ´¦ÀíĞ¡ÊıµãÇ°ÃæµÄÊı
-		char[] chDig = head.toCharArray(); // °ÑÕûÊı²¿·Ö×ª»¯³É×Ö·ûÊı×é
-		char zero = '0'; // ±êÖ¾'0'±íÊ¾³öÏÖ¹ı0
-		byte zeroSerNum = 0; // Á¬Ğø³öÏÖ0µÄ´ÎÊı
-		for (int i = 0; i < chDig.length; i++) { // Ñ­»·´¦ÀíÃ¿¸öÊı×Ö
-			int idx = (chDig.length - i - 1) % 4; // È¡¶ÎÄÚÎ»ÖÃ
-			int vidx = (chDig.length - i - 1) / 4; // È¡¶ÎÎ»ÖÃ
-			if (chDig[i] == '0') { // Èç¹ûµ±Ç°×Ö·ûÊÇ0
-				zeroSerNum++; // Á¬Ğø0´ÎÊıµİÔö
-				if (zero == '0') { // ±êÖ¾
+		// å¤„ç†å°æ•°ç‚¹å‰é¢çš„æ•°
+		char[] chDig = head.toCharArray(); // æŠŠæ•´æ•°éƒ¨åˆ†è½¬åŒ–æˆå­—ç¬¦æ•°ç»„
+		char zero = '0'; // æ ‡å¿—'0'è¡¨ç¤ºå‡ºç°è¿‡0
+		byte zeroSerNum = 0; // è¿ç»­å‡ºç°0çš„æ¬¡æ•°
+		for (int i = 0; i < chDig.length; i++) { // å¾ªç¯å¤„ç†æ¯ä¸ªæ•°å­—
+			int idx = (chDig.length - i - 1) % 4; // å–æ®µå†…ä½ç½®
+			int vidx = (chDig.length - i - 1) / 4; // å–æ®µä½ç½®
+			if (chDig[i] == '0') { // å¦‚æœå½“å‰å­—ç¬¦æ˜¯0
+				zeroSerNum++; // è¿ç»­0æ¬¡æ•°é€’å¢
+				if (zero == '0') { // æ ‡å¿—
 					zero = digit[0];
 				} else if (idx == 0 && vidx > 0 && zeroSerNum < 4) {
 					prefix += vunit[vidx - 1];
@@ -371,32 +371,32 @@ public class StringUtil {
 				}
 				continue;
 			}
-			zeroSerNum = 0; // Á¬Ğø0´ÎÊıÇåÁã
-			if (zero != '0') { // Èç¹û±êÖ¾²»Îª0,Ôò¼ÓÉÏ,ÀıÈçÍò,ÒÚÊ²Ã´µÄ
+			zeroSerNum = 0; // è¿ç»­0æ¬¡æ•°æ¸…é›¶
+			if (zero != '0') { // å¦‚æœæ ‡å¿—ä¸ä¸º0,åˆ™åŠ ä¸Š,ä¾‹å¦‚ä¸‡,äº¿ä»€ä¹ˆçš„
 				prefix += zero;
 				zero = '0';
 			}
-			prefix += digit[chDig[i] - '0']; // ×ª»¯¸ÃÊı×Ö±íÊ¾
+			prefix += digit[chDig[i] - '0']; // è½¬åŒ–è¯¥æ•°å­—è¡¨ç¤º
 			if (idx > 0)
 				prefix += hunit[idx - 1];
 			if (idx == 0 && vidx > 0) {
-				prefix += vunit[vidx - 1]; // ¶Î½áÊøÎ»ÖÃÓ¦¸Ã¼ÓÉÏ¶ÎÃûÈçÍò,ÒÚ
+				prefix += vunit[vidx - 1]; // æ®µç»“æŸä½ç½®åº”è¯¥åŠ ä¸Šæ®µåå¦‚ä¸‡,äº¿
 			}
 		}
 
 		if (prefix.length() > 0)
-			prefix += 'Ô²'; // Èç¹ûÕûÊı²¿·Ö´æÔÚ,ÔòÓĞÔ²µÄ×ÖÑù
-		return prefix + suffix; // ·µ»ØÕıÈ·±íÊ¾
+			prefix += 'åœ†'; // å¦‚æœæ•´æ•°éƒ¨åˆ†å­˜åœ¨,åˆ™æœ‰åœ†çš„å­—æ ·
+		return prefix + suffix; // è¿”å›æ­£ç¡®è¡¨ç¤º
 	}
 
 	/**
-	 * ¹¦ÄÜÃèÊö£ºÈ¥µô×Ö·û´®ÖĞÖØ¸´µÄ×Ó×Ö·û´®
-	 * @param str Ô­×Ö·û´®£¬Èç¹ûÓĞ×Ó×Ö·û´®ÔòÓÃ¿Õ¸ñ¸ô¿ªÒÔ±íÊ¾×Ó×Ö·û´®
-	 * @return String ·µ»ØÈ¥µôÖØ¸´×Ó×Ö·û´®ºóµÄ×Ö·û´®
+	 * åŠŸèƒ½æè¿°ï¼šå»æ‰å­—ç¬¦ä¸²ä¸­é‡å¤çš„å­å­—ç¬¦ä¸²
+	 * @param str åŸå­—ç¬¦ä¸²ï¼Œå¦‚æœæœ‰å­å­—ç¬¦ä¸²åˆ™ç”¨ç©ºæ ¼éš”å¼€ä»¥è¡¨ç¤ºå­å­—ç¬¦ä¸²
+	 * @return String è¿”å›å»æ‰é‡å¤å­å­—ç¬¦ä¸²åçš„å­—ç¬¦ä¸²
 	 */
 	private static String removeSameString(String str) {
-		Set<String> mLinkedSet = new LinkedHashSet<String>();// set¼¯ºÏµÄÌØÕ÷£ºÆä×Ó¼¯²»¿ÉÒÔÖØ¸´
-		String[] strArray = str.split(" ");// ¸ù¾İ¿Õ¸ñ(ÕıÔò±í´ïÊ½)·Ö¸î×Ö·û´®
+		Set<String> mLinkedSet = new LinkedHashSet<String>();// seté›†åˆçš„ç‰¹å¾ï¼šå…¶å­é›†ä¸å¯ä»¥é‡å¤
+		String[] strArray = str.split(" ");// æ ¹æ®ç©ºæ ¼(æ­£åˆ™è¡¨è¾¾å¼)åˆ†å‰²å­—ç¬¦ä¸²
 		StringBuffer sb = new StringBuffer();
 
 		for (int i = 0; i < strArray.length; i++) {
@@ -410,7 +410,7 @@ public class StringUtil {
 	}
 
 	/**
-	 * ¹¦ÄÜÃèÊö£º¹ıÂËÌØÊâ×Ö·û
+	 * åŠŸèƒ½æè¿°ï¼šè¿‡æ»¤ç‰¹æ®Šå­—ç¬¦
 	 * @param src
 	 * @return
 	 */
@@ -459,7 +459,7 @@ public class StringUtil {
 	}
 
 	/**
-	 * ¹¦ÄÜÃèÊö£ºÅĞ¶ÏÊÇ²»ÊÇºÏ·¨µÄÊÖ»úºÅÂë
+	 * åŠŸèƒ½æè¿°ï¼šåˆ¤æ–­æ˜¯ä¸æ˜¯åˆæ³•çš„æ‰‹æœºå·ç 
 	 * @param handset
 	 * @return boolean
 	 */
@@ -476,7 +476,7 @@ public class StringUtil {
 	}
 
 	/**
-	 * ¹¦ÄÜÃèÊö£º·´¹ıÂËÌØÊâ×Ö·û
+	 * åŠŸèƒ½æè¿°ï¼šåè¿‡æ»¤ç‰¹æ®Šå­—ç¬¦
 	 * @param src
 	 * @return
 	 */
@@ -498,23 +498,23 @@ public class StringUtil {
 	public static void main(String[] args) {
 		// String source = "abcdefgabcdefgabcdefgabcdefgabcdefgabcdefg";
 		// String from = "efg";
-		// String to = "·¿ºØÍş";
-		// System.out.println("ÔÚ×Ö·û´®sourceÖĞ£¬ÓÃtoÌæ»»from£¬Ìæ»»½á¹ûÎª£º"
+		// String to = "æˆ¿è´ºå¨";
+		// System.out.println("åœ¨å­—ç¬¦ä¸²sourceä¸­ï¼Œç”¨toæ›¿æ¢fromï¼Œæ›¿æ¢ç»“æœä¸ºï¼š"
 		// + replace(from, to, source));
-		// System.out.println("·µ»ØÖ¸¶¨×Ö½Ú³¤¶ÈµÄ×Ö·û´®£º"
+		// System.out.println("è¿”å›æŒ‡å®šå­—èŠ‚é•¿åº¦çš„å­—ç¬¦ä¸²ï¼š"
 		// + toLength("abcdefgabcdefgabcdefgabcdefgabcdefgabcdefg", 9));
-		// System.out.println("ÅĞ¶ÏÊÇ·ñÎªÕûÊı£º" + isInteger("+0"));
-		// System.out.println("ÅĞ¶ÏÊÇ·ñÎª¸¡µãÊı£¬°üÀ¨doubleºÍfloat£º" + isDouble("+0.36"));
-		// System.out.println("ÅĞ¶ÏÊäÈëµÄ×Ö·û´®ÊÇ·ñ·ûºÏEmailÑùÊ½£º" +
+		// System.out.println("åˆ¤æ–­æ˜¯å¦ä¸ºæ•´æ•°ï¼š" + isInteger("+0"));
+		// System.out.println("åˆ¤æ–­æ˜¯å¦ä¸ºæµ®ç‚¹æ•°ï¼ŒåŒ…æ‹¬doubleå’Œfloatï¼š" + isDouble("+0.36"));
+		// System.out.println("åˆ¤æ–­è¾“å…¥çš„å­—ç¬¦ä¸²æ˜¯å¦ç¬¦åˆEmailæ ·å¼ï¼š" +
 		// isEmail("fhwbj@163.com"));
-		// System.out.println("ÅĞ¶ÏÊäÈëµÄ×Ö·û´®ÊÇ·ñÎª´¿ºº×Ö£º" + isChinese("ÄãºÃ£¡"));
-		// System.out.println("ÅĞ¶ÏÊäÈëµÄÊı¾İÊÇ·ñÊÇÖÊÊı£º" + isPrime(12));
-//		System.out.println("ÈËÃñ±Ò×ª»»³É´óĞ´£º" + hangeToBig("10019658"));
-		System.out.println("È¥µô×Ö·û´®ÖĞÖØ¸´µÄ×Ó×Ö·û´®£º" + removeSameString("100 100 9658"));
-		// System.out.println("¹ıÂËÌØÊâ×Ö·û£º" + encoding("100\"s<>fdsd100 9658"));
-		// System.out.println("ÅĞ¶ÏÊÇ²»ÊÇºÏ·¨µÄÊÖ»úºÅÂë£º" + isHandset("15981807340"));
+		// System.out.println("åˆ¤æ–­è¾“å…¥çš„å­—ç¬¦ä¸²æ˜¯å¦ä¸ºçº¯æ±‰å­—ï¼š" + isChinese("ä½ å¥½ï¼"));
+		// System.out.println("åˆ¤æ–­è¾“å…¥çš„æ•°æ®æ˜¯å¦æ˜¯è´¨æ•°ï¼š" + isPrime(12));
+//		System.out.println("äººæ°‘å¸è½¬æ¢æˆå¤§å†™ï¼š" + hangeToBig("10019658"));
+		System.out.println("å»æ‰å­—ç¬¦ä¸²ä¸­é‡å¤çš„å­å­—ç¬¦ä¸²ï¼š" + removeSameString("100 100 9658"));
+		// System.out.println("è¿‡æ»¤ç‰¹æ®Šå­—ç¬¦ï¼š" + encoding("100\"s<>fdsd100 9658"));
+		// System.out.println("åˆ¤æ–­æ˜¯ä¸æ˜¯åˆæ³•çš„æ‰‹æœºå·ç ï¼š" + isHandset("15981807340"));
 
-		// System.out.println("´Ó×Ö·û´®ÖĞÈ¡ÖµEmail£º" + parse("159818 fwhbj@163.com
+		// System.out.println("ä»å­—ç¬¦ä¸²ä¸­å–å€¼Emailï¼š" + parse("159818 fwhbj@163.com
 		// 07340"));
 	}
 }
