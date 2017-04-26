@@ -32,7 +32,7 @@ public class TestMyBatis {
     public void test1() {  
         User user = userService.getUserById(1);  
         // System.out.println(user.getUserName());  
-        // logger.info("ֵ��"+user.getUserName());  
+        // logger.info("ֵ名称"+user.getUserName());  
         logger.info(JSON.toJSONString(user));  
     }  
 }  
