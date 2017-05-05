@@ -1,5 +1,7 @@
 
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -34,5 +36,15 @@ public class TestMyBatis {
         // System.out.println(user.getUserName());  
         // logger.info("ֵ名称"+user.getUserName());  
         logger.info(JSON.toJSONString(user));  
+    }  
+    @Test  
+    public void test2() {  
+    	User user = new User();
+    	//user.setId(1);
+    	user.setUserName("李浩");
+    	List<User> users = userService.selectAll(user);  
+        // System.out.println(user.getUserName());  
+        // logger.info("ֵ名称"+user.getUserName());  
+        logger.info(JSON.toJSONString(users));  
     }  
 }  

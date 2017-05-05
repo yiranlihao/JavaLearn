@@ -1,5 +1,7 @@
 package yiranlihao.learn.springmvc.dao;
 
+import java.util.List;
+
 import yiranlihao.learn.springmvc.entity.User;
 
 public interface UserMapper {
@@ -14,4 +16,6 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+    
+    List<User> selectAll(User record);
 }

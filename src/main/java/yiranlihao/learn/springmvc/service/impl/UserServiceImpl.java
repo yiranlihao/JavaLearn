@@ -1,5 +1,7 @@
 package yiranlihao.learn.springmvc.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -19,6 +21,11 @@ public class UserServiceImpl implements UserService {
 		User user = userMapper.selectByPrimaryKey(id);
 		
 		return user;
+	}
+
+	@Override
+	public List<User> selectAll(User user) {
+		return userMapper.selectAll(user);
 	}
 
 }

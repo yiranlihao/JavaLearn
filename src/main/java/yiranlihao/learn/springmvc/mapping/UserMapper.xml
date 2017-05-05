@@ -72,6 +72,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
   <update id="updateByPrimaryKey" parameterType="yiranlihao.learn.springmvc.entity.User">
     update user_t
     set user_name = #{userName,jdbcType=VARCHAR},
@@ -79,4 +80,22 @@
       age = #{age,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <sql id="queryAll_where">
+  	<where>
+  		ID > 0 
+  		<if test="id != null">
+  			and id = #{id,jdbcType=INTEGER}
+  		</if>
+  		<if test="userName != null">
+  			and user_name = #{userName,jdbcType=VARCHAR}
+  		</if>
+  	</where>
+  </sql>
+  
+  <select id="selectAll" parameterType="yiranlihao.learn.springmvc.entity.User" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List" />
+  	  from user_t
+  <include refid="queryAll_where"/>
+  </select>
+  
 </mapper>
