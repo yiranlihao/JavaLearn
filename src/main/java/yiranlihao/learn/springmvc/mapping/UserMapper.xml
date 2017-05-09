@@ -98,4 +98,12 @@
   <include refid="queryAll_where"/>
   </select>
   
+  <select id="selectIN" parameterType="map" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List" />
+  	  from user_t where ID in 
+  	  <foreach collection="ids" item="id" separator="," open="(" close=")">
+		#{id}
+	  </foreach>
+  </select>
+  
 </mapper>

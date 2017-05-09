@@ -1,6 +1,9 @@
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -47,4 +50,18 @@ public class TestMyBatis {
         // logger.info("ֵ名称"+user.getUserName());  
         logger.info(JSON.toJSONString(users));  
     }  
+    
+    @Test  
+    public void test3() {  
+    	Map<String, Object> user = new HashMap<String, Object>();
+    	List<Long> ids = new ArrayList<>();
+    	ids.add(1L);
+    	ids.add(2L);
+    	user.put("ids", ids);
+    	List<User> users = userService.selectIN(user);  
+        // System.out.println(user.getUserName());  
+        // logger.info("ֵ名称"+user.getUserName());  
+        logger.info(JSON.toJSONString(users));  
+    }  
+    
 }  
