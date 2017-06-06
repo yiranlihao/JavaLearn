@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;
+import java.util.List;
 
 public class Test {
 
 	
 	public static void main(String[] args) {
 		
-		Vector<User> users = new Vector<>();
+		List<User> users = new ArrayList<>();
 		
 		User user = new User();
 		user.setId(1);
@@ -25,11 +25,15 @@ public class Test {
 		user1.setName("LXT");
 		users.add(user1);
 		
-		CopyVector<User, UserT> copyVector = new CopyVector<>(UserT.class);
+		CopyList<User, UserT> copyList = new CopyList<>(UserT.class);
 		
-		Vector<UserT> v = copyVector.copy(users);
+		List<UserT> v = copyList.copy(users);
 		
 		System.err.println(v.get(0).getName());
 		System.err.println(v.get(1).getName());
+		
+		
+		
+		
 	}
 }
