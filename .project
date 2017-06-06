@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>MavenSpringMvc</name>
+	<name>JavaLearn</name>
 	<comment></comment>
 	<projects>
-		<project>WebServiceTest1</project>
+		<project>JavaLearn</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
