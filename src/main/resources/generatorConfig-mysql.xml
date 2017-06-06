@@ -1,0 +1,19 @@
+<<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >  
+<generatorConfiguration >  
+<!-- 设置mysql驱动路径 -->    
+<classPathEntry location="D:/mysoft/mysql-connector-java-5.1.18-bin.jar" />    
+  <context id="context1" >  
+    <!-- jdbc连接信息 -->    
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/scomserverdb" userId="root" password="" />  
+    <!-- 生成vo对象 -->    
+    <javaModelGenerator targetPackage="net.lihao.mybatis.entity" targetProject="utils" />  
+    <!-- 生成用于查询的Example对象 -->    
+    <sqlMapGenerator targetPackage="net.lihao.mybatis.entity" targetProject="utils" />  
+    <!-- 生成DAO的类文件以及配置文件 -->    
+    <javaClientGenerator targetPackage="net.lihao.mybatis.dao" targetProject="utils" type="XMLMAPPER" />  
+    <!-- 想要生成的数据库表,自动化工具会根据该表的结构生成相应的vo对象 -->    
+    <table schema="dbo" tableName="base_invoice" >  
+    </table>  
+  </context>  
+</generatorConfiguration>  
