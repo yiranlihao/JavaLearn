@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class OutputStreamTest {
 
-	// ÏòÎÄ¼şÖĞĞ´Èë×Ö·û´®
+	// å‘æ–‡ä»¶ä¸­å†™å…¥å­—ç¬¦ä¸²
 	@Test
 	public void test1() throws IOException {
 		String fileName = "D:" + File.separator + "hello.txt";
@@ -21,13 +21,13 @@ public class OutputStreamTest {
 		out.close();
 	}
 
-	// ÏòÎÄ¼şÖĞÒ»¸ö×Ö½ÚÒ»¸ö×Ö½ÚµÄĞ´Èë×Ö·û´®
+	// å‘æ–‡ä»¶ä¸­ä¸€ä¸ªå­—èŠ‚ä¸€ä¸ªå­—èŠ‚çš„å†™å…¥å­—ç¬¦ä¸²
 	@Test
 	public void test2() throws IOException {
 		String fileName = "D:" + File.separator + "hello.txt";
 		File f = new File(fileName);
 		OutputStream out = new FileOutputStream(f);
-		String str = "Hello World£¡£¡";
+		String str = "Hello Worldï¼ï¼";
 		byte[] b = str.getBytes();
 		for (int i = 0; i < b.length; i++) {
 			out.write(b[i]);
@@ -39,9 +39,9 @@ public class OutputStreamTest {
 	public void test3() throws IOException {
 		String fileName = "D:" + File.separator + "hello.txt";
 		File f = new File(fileName);
-		OutputStream out = new FileOutputStream(f, true);// true±íÊ¾×·¼ÓÄ£Ê½£¬·ñÔòÎª¸²¸Ç
+		OutputStream out = new FileOutputStream(f, true);// trueè¡¨ç¤ºè¿½åŠ æ¨¡å¼ï¼Œå¦åˆ™ä¸ºè¦†ç›–
 		String str = "Rollen";
-		// String str="\r\nRollen"; ¿ÉÒÔ»»ĞĞ
+		// String str="\r\nRollen"; å¯ä»¥æ¢è¡Œ
 		byte[] b = str.getBytes();
 		for (int i = 0; i < b.length; i++) {
 			out.write(b[i]);

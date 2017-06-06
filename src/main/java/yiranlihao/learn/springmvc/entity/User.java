@@ -3,11 +3,11 @@ package yiranlihao.learn.springmvc.entity;
 public class User {
     private Integer id;
 
-    private String userName;//ĞÕÃû
+    private String userName;//å§“å
 
-    private String password;//ÃÜÂë
+    private String password;//å¯†ç 
 
-    private Integer age;//ÄêÁä
+    private Integer age;//å¹´é¾„
 
     public Integer getId() {
         return id;

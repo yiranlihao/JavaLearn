@@ -12,8 +12,8 @@ import redis.clients.jedis.JedisPoolConfig;
   
   
 /** 
- * Redis¹¤¾ßÀà,ÓÃÓÚ»ñÈ¡RedisPool. 
- * ²Î¿¼¹ÙÍøËµÃ÷ÈçÏÂ£º 
+ * Rediså·¥å…·ç±»,ç”¨äºè·å–RedisPool. 
+ * å‚è€ƒå®˜ç½‘è¯´æ˜å¦‚ä¸‹ï¼š 
  * You shouldn't use the same instance from different threads because you'll have strange errors. 
  * And sometimes creating lots of Jedis instances is not good enough because it means lots of sockets and connections, 
  * which leads to strange errors as well. A single Jedis instance is not threadsafe! 
@@ -28,25 +28,25 @@ import redis.clients.jedis.JedisPoolConfig;
  */  
 public class JedisUtil  {  
     
-    //¿ÉÓÃÁ¬½ÓÊµÀıµÄ×î´óÊıÄ¿£¬Ä¬ÈÏÖµÎª8£»
-    //Èç¹û¸³ÖµÎª-1£¬Ôò±íÊ¾²»ÏŞÖÆ£»Èç¹ûpoolÒÑ¾­·ÖÅäÁËmaxActive¸öjedisÊµÀı£¬Ôò´ËÊ±poolµÄ×´Ì¬Îªexhausted(ºÄ¾¡)¡£
+    //å¯ç”¨è¿æ¥å®ä¾‹çš„æœ€å¤§æ•°ç›®ï¼Œé»˜è®¤å€¼ä¸º8ï¼›
+    //å¦‚æœèµ‹å€¼ä¸º-1ï¼Œåˆ™è¡¨ç¤ºä¸é™åˆ¶ï¼›å¦‚æœpoolå·²ç»åˆ†é…äº†maxActiveä¸ªjediså®ä¾‹ï¼Œåˆ™æ­¤æ—¶poolçš„çŠ¶æ€ä¸ºexhausted(è€—å°½)ã€‚
     private static int MAX_ACTIVE = 1024;
     
-    //¿ØÖÆÒ»¸öpool×î¶àÓĞ¶àÉÙ¸ö×´Ì¬Îªidle(¿ÕÏĞµÄ)µÄjedisÊµÀı£¬Ä¬ÈÏÖµÒ²ÊÇ8¡£
+    //æ§åˆ¶ä¸€ä¸ªpoolæœ€å¤šæœ‰å¤šå°‘ä¸ªçŠ¶æ€ä¸ºidle(ç©ºé—²çš„)çš„jediså®ä¾‹ï¼Œé»˜è®¤å€¼ä¹Ÿæ˜¯8ã€‚
     private static int MAX_IDLE = 200;
     
-    //µÈ´ı¿ÉÓÃÁ¬½ÓµÄ×î´óÊ±¼ä£¬µ¥Î»ºÁÃë£¬Ä¬ÈÏÖµÎª-1£¬±íÊ¾ÓÀ²»³¬Ê±¡£Èç¹û³¬¹ıµÈ´ıÊ±¼ä£¬ÔòÖ±½ÓÅ×³öJedisConnectionException£»
+    //ç­‰å¾…å¯ç”¨è¿æ¥çš„æœ€å¤§æ—¶é—´ï¼Œå•ä½æ¯«ç§’ï¼Œé»˜è®¤å€¼ä¸º-1ï¼Œè¡¨ç¤ºæ°¸ä¸è¶…æ—¶ã€‚å¦‚æœè¶…è¿‡ç­‰å¾…æ—¶é—´ï¼Œåˆ™ç›´æ¥æŠ›å‡ºJedisConnectionExceptionï¼›
     private static int MAX_WAIT = 10000;
     
     private static int TIMEOUT = 10000;
     
-    //ÔÚborrowÒ»¸öjedisÊµÀıÊ±£¬ÊÇ·ñÌáÇ°½øĞĞvalidate²Ù×÷£»Èç¹ûÎªtrue£¬ÔòµÃµ½µÄjedisÊµÀı¾ùÊÇ¿ÉÓÃµÄ£»
+    //åœ¨borrowä¸€ä¸ªjediså®ä¾‹æ—¶ï¼Œæ˜¯å¦æå‰è¿›è¡Œvalidateæ“ä½œï¼›å¦‚æœä¸ºtrueï¼Œåˆ™å¾—åˆ°çš„jediså®ä¾‹å‡æ˜¯å¯ç”¨çš„ï¼›
     private static boolean TEST_ON_BORROW = true;
 	
 	protected Logger log = LoggerFactory.getLogger(getClass());  
       
     /** 
-     * Ë½ÓĞ¹¹ÔìÆ÷. 
+     * ç§æœ‰æ„é€ å™¨. 
      */  
     private JedisUtil() {  
           
@@ -55,8 +55,8 @@ public class JedisUtil  {
       
       
     /** 
-     * »ñÈ¡Á¬½Ó³Ø. 
-     * @return Á¬½Ó³ØÊµÀı 
+     * è·å–è¿æ¥æ± . 
+     * @return è¿æ¥æ± å®ä¾‹ 
      */  
     private static JedisPool getPool(String ip,int port) {  
         String key = ip+":" +port;  
@@ -68,8 +68,8 @@ public class JedisUtil  {
             config.setTestOnReturn(true);  
             try{    
                 /** 
-                 *Èç¹ûÄãÓöµ½ java.net.SocketTimeoutException: Read timed out exceptionµÄÒì³£ĞÅÏ¢ 
-                 *Çë³¢ÊÔÔÚ¹¹ÔìJedisPoolµÄÊ±ºòÉèÖÃ×Ô¼ºµÄ³¬Ê±Öµ. JedisPoolÄ¬ÈÏµÄ³¬Ê±Ê±¼äÊÇ2Ãë(µ¥Î»ºÁÃë) 
+                 *å¦‚æœä½ é‡åˆ° java.net.SocketTimeoutException: Read timed out exceptionçš„å¼‚å¸¸ä¿¡æ¯ 
+                 *è¯·å°è¯•åœ¨æ„é€ JedisPoolçš„æ—¶å€™è®¾ç½®è‡ªå·±çš„è¶…æ—¶å€¼. JedisPoolé»˜è®¤çš„è¶…æ—¶æ—¶é—´æ˜¯2ç§’(å•ä½æ¯«ç§’) 
                  */  
                 pool = new JedisPool(config, ip, port,TIMEOUT);  
                 maps.put(key, pool);  
@@ -83,29 +83,29 @@ public class JedisUtil  {
     }  
   
     /** 
-     *Àà¼¶µÄÄÚ²¿Àà£¬Ò²¾ÍÊÇ¾²Ì¬µÄ³ÉÔ±Ê½ÄÚ²¿Àà£¬¸ÃÄÚ²¿ÀàµÄÊµÀıÓëÍâ²¿ÀàµÄÊµÀı 
-     *Ã»ÓĞ°ó¶¨¹ØÏµ£¬¶øÇÒÖ»ÓĞ±»µ÷ÓÃµ½Ê±²Å»á×°ÔØ£¬´Ó¶øÊµÏÖÁËÑÓ³Ù¼ÓÔØ¡£ 
+     *ç±»çº§çš„å†…éƒ¨ç±»ï¼Œä¹Ÿå°±æ˜¯é™æ€çš„æˆå‘˜å¼å†…éƒ¨ç±»ï¼Œè¯¥å†…éƒ¨ç±»çš„å®ä¾‹ä¸å¤–éƒ¨ç±»çš„å®ä¾‹ 
+     *æ²¡æœ‰ç»‘å®šå…³ç³»ï¼Œè€Œä¸”åªæœ‰è¢«è°ƒç”¨åˆ°æ—¶æ‰ä¼šè£…è½½ï¼Œä»è€Œå®ç°äº†å»¶è¿ŸåŠ è½½ã€‚ 
      */  
     private static class RedisUtilHolder{  
         /** 
-         * ¾²Ì¬³õÊ¼»¯Æ÷£¬ÓÉJVMÀ´±£Ö¤Ïß³Ì°²È« 
+         * é™æ€åˆå§‹åŒ–å™¨ï¼Œç”±JVMæ¥ä¿è¯çº¿ç¨‹å®‰å…¨ 
          */  
         private static JedisUtil instance = new JedisUtil();  
     }  
   
     /** 
-     *µ±getInstance·½·¨µÚÒ»´Î±»µ÷ÓÃµÄÊ±ºò£¬ËüµÚÒ»´Î¶ÁÈ¡ 
-     *RedisUtilHolder.instance£¬µ¼ÖÂRedisUtilHolderÀàµÃµ½³õÊ¼»¯£»¶øÕâ¸öÀàÔÚ×°ÔØ²¢±»³õÊ¼»¯µÄÊ±ºò£¬»á³õÊ¼»¯ËüµÄ¾² 
-     *Ì¬Óò£¬´Ó¶ø´´½¨RedisUtilµÄÊµÀı£¬ÓÉÓÚÊÇ¾²Ì¬µÄÓò£¬Òò´ËÖ»»áÔÚĞéÄâ»ú×°ÔØÀàµÄÊ±ºò³õÊ¼»¯Ò»´Î£¬²¢ÓÉĞéÄâ»úÀ´±£Ö¤ËüµÄÏß³Ì°²È«ĞÔ¡£ 
-     *Õâ¸öÄ£Ê½µÄÓÅÊÆÔÚÓÚ£¬getInstance·½·¨²¢Ã»ÓĞ±»Í¬²½£¬²¢ÇÒÖ»ÊÇÖ´ĞĞÒ»¸öÓòµÄ·ÃÎÊ£¬Òò´ËÑÓ³Ù³õÊ¼»¯²¢Ã»ÓĞÔö¼ÓÈÎºÎ·ÃÎÊ³É±¾¡£ 
+     *å½“getInstanceæ–¹æ³•ç¬¬ä¸€æ¬¡è¢«è°ƒç”¨çš„æ—¶å€™ï¼Œå®ƒç¬¬ä¸€æ¬¡è¯»å– 
+     *RedisUtilHolder.instanceï¼Œå¯¼è‡´RedisUtilHolderç±»å¾—åˆ°åˆå§‹åŒ–ï¼›è€Œè¿™ä¸ªç±»åœ¨è£…è½½å¹¶è¢«åˆå§‹åŒ–çš„æ—¶å€™ï¼Œä¼šåˆå§‹åŒ–å®ƒçš„é™ 
+     *æ€åŸŸï¼Œä»è€Œåˆ›å»ºRedisUtilçš„å®ä¾‹ï¼Œç”±äºæ˜¯é™æ€çš„åŸŸï¼Œå› æ­¤åªä¼šåœ¨è™šæ‹Ÿæœºè£…è½½ç±»çš„æ—¶å€™åˆå§‹åŒ–ä¸€æ¬¡ï¼Œå¹¶ç”±è™šæ‹Ÿæœºæ¥ä¿è¯å®ƒçš„çº¿ç¨‹å®‰å…¨æ€§ã€‚ 
+     *è¿™ä¸ªæ¨¡å¼çš„ä¼˜åŠ¿åœ¨äºï¼ŒgetInstanceæ–¹æ³•å¹¶æ²¡æœ‰è¢«åŒæ­¥ï¼Œå¹¶ä¸”åªæ˜¯æ‰§è¡Œä¸€ä¸ªåŸŸçš„è®¿é—®ï¼Œå› æ­¤å»¶è¿Ÿåˆå§‹åŒ–å¹¶æ²¡æœ‰å¢åŠ ä»»ä½•è®¿é—®æˆæœ¬ã€‚ 
      */  
     public static JedisUtil getInstance() {  
         return RedisUtilHolder.instance;  
     }  
       
     /** 
-     * »ñÈ¡RedisÊµÀı. 
-     * @return Redis¹¤¾ßÀàÊµÀı 
+     * è·å–Rediså®ä¾‹. 
+     * @return Rediså·¥å…·ç±»å®ä¾‹ 
      */  
     public Jedis getJedis(String ip,int port) {  
         Jedis jedis  = null;  
@@ -116,7 +116,7 @@ public class JedisUtil  {
                 //log.info("get redis master1!");  
             } catch (Exception e) {  
                 log.error("get redis master1 failed!", e);  
-                 // Ïú»Ù¶ÔÏó    
+                 // é”€æ¯å¯¹è±¡    
                 getPool(ip,port).returnBrokenResource(jedis);    
             }  
             count++;  
@@ -125,8 +125,8 @@ public class JedisUtil  {
     }  
   
     /** 
-     * ÊÍ·ÅredisÊµÀıµ½Á¬½Ó³Ø. 
-     * @param jedis redisÊµÀı 
+     * é‡Šæ”¾rediså®ä¾‹åˆ°è¿æ¥æ± . 
+     * @param jedis rediså®ä¾‹ 
      */  
     public void closeJedis(Jedis jedis,String ip,int port) {  
         if(jedis != null) {  

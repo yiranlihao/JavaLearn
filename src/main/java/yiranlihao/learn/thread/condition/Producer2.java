@@ -24,7 +24,7 @@ public class Producer2 implements Runnable {
             lock.lock();  
             try{  
                 while(queue.size()==queueSize){  
-                    System.out.println("Producer2  ¶ÓÁĞÂúÁË£¬µÈ´ıÏû·ÑÕßÏû·Ñ...");  
+                    System.out.println("Producer2  é˜Ÿåˆ—æ»¡äº†ï¼Œç­‰å¾…æ¶ˆè´¹è€…æ¶ˆè´¹...");  
                     try {  
                         produce.await();  
                     } catch (InterruptedException e) {  
@@ -33,7 +33,7 @@ public class Producer2 implements Runnable {
                     }  
                 }  
                 queue.offer(1);  
-                System.out.println("Producer2  Ïò¶ÓÁĞÖĞ²åÈëÁËÒ»¸ö¶ÔÏó£¬¶ÓÁĞµÄÊ£Óà¿Õ¼äÊÇ£º"+(queueSize-queue.size()));  
+                System.out.println("Producer2  å‘é˜Ÿåˆ—ä¸­æ’å…¥äº†ä¸€ä¸ªå¯¹è±¡ï¼Œé˜Ÿåˆ—çš„å‰©ä½™ç©ºé—´æ˜¯ï¼š"+(queueSize-queue.size()));  
                 consume.signal();  
                 try {  
                     Thread.sleep(100);  

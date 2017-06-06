@@ -41,7 +41,7 @@ public class ShardedJedisPoolUtils {
 				fis = new FileInputStream(fileWindows);
 			}
 			if (fis == null) {
-				throw new IllegalArgumentException("redisÈ±Ê§ÅäÖÃÎÄ¼ş£¬ÇëÕıÈ·ÅäÖÃapplication.propertiesÎÄ¼ş!");
+				throw new IllegalArgumentException("redisç¼ºå¤±é…ç½®æ–‡ä»¶ï¼Œè¯·æ­£ç¡®é…ç½®application.propertiesæ–‡ä»¶!");
 			}
 
 			prop.load(fis);
@@ -71,17 +71,17 @@ public class ShardedJedisPoolUtils {
 			} 
 
 			if (shards.isEmpty()) {
-				throw new IllegalArgumentException("Á¬½Ó³ØÖĞÃ»ÓĞredisÊµÀı");
+				throw new IllegalArgumentException("è¿æ¥æ± ä¸­æ²¡æœ‰rediså®ä¾‹");
 			}
 
 			if (shards.isEmpty()) {
-				throw new IllegalArgumentException("Á¬½Ó³ØÖĞÃ»ÓĞredisÊµÀı");
+				throw new IllegalArgumentException("è¿æ¥æ± ä¸­æ²¡æœ‰rediså®ä¾‹");
 			}
 
 			pool = new ShardedJedisPool(config, shards);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new IllegalArgumentException("³õÊ¼»¯Ê§°Ü¡£¡£" + e.getMessage());
+			throw new IllegalArgumentException("åˆå§‹åŒ–å¤±è´¥ã€‚ã€‚" + e.getMessage());
 		}
 	}
 
@@ -514,7 +514,7 @@ public class ShardedJedisPoolUtils {
 
 		System.out.println(hset("sss", "s111", "s222", 10));
 
-		System.out.println(hset("sss", "s1", "s2¶¹¸¯¸É", 5));
+		System.out.println(hset("sss", "s1", "s2è±†è…å¹²", 5));
 		System.out.println(hgetall("sss"));
 		System.out.println(ttl("sss"));
 

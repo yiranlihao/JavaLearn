@@ -39,9 +39,10 @@
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->  
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
         <property name="dataSource" ref="dataSource" />  
-        <!-- 自动扫描mapping.xml文件 -->  
-        <property name="mapperLocations" value="classpath:yiranlihao/learn/springmvc/mapping/*.xml"></property>  
-    </bean>  
+        <!-- 自动扫描mapping.xml文件 -->
+        <property name="mapperLocations" value="classpath*:yiranlihao/learn/springmvc/mapping/*.xml"></property>  <!--这里配置的目录在src/main/java下，编译的时候不会讲xml文件编译到classe对应下的目录，启动报错，找不到xml文件 -->
+        <!-- <property name="mapperLocations" value="classpath:sql/*.xml"></property> 配置目录为src/main/resources 就不会报错 -->
+    </bean>
   
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->  
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  

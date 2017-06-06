@@ -32,7 +32,7 @@ public class InputStreamTest {
 		byte[] b = new byte[1024];
 		int len = in.read(b);
 		in.close();
-		System.out.println("读入长度为：" + len);
+		System.out.println("璇诲叆闀垮害涓猴細" + len);
 		System.out.println(new String(b));// test1
 		System.out.println(new String(b, 0, len));
 	}
@@ -44,7 +44,7 @@ public class InputStreamTest {
 		InputStream in = new FileInputStream(f);
 		byte[] b = new byte[(int) f.length()];
 		in.read(b);
-		System.out.println("文件长度为：" + f.length());
+		System.out.println("鏂囦欢闀垮害涓猴細" + f.length());
 		in.close();
 		System.out.println(new String(b));
 	}
@@ -102,7 +102,7 @@ public class InputStreamTest {
 			if (temp == ',') {
 				push.unread(temp);
 				temp = push.read();
-				System.out.print("(回退" + (char) temp + ") ");
+				System.out.print("(鍥為��" + (char) temp + ") ");
 			} else {
 				System.out.print((char) temp);
 			}

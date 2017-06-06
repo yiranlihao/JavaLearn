@@ -24,7 +24,7 @@ public class Consumer2 implements Runnable {
             lock.lock();  
             try{  
                 while(queue.size()==0){  
-                    System.out.println("Consumer2  ¶ÓÁĞÎª¿Õ£¬µÈ´ıÊı¾İ...");  
+                    System.out.println("Consumer2  é˜Ÿåˆ—ä¸ºç©ºï¼Œç­‰å¾…æ•°æ®...");  
                     try {  
                         consume.await();  
                     } catch (InterruptedException e) {  
@@ -33,7 +33,7 @@ public class Consumer2 implements Runnable {
                     }  
                 }  
                 queue.poll();  
-                System.out.println("Consumer2  ´Ó¶ÓÁĞÖĞÈ¡³öÒ»¸öÔªËØ£¬¶ÓÁĞÊ£ÓàÊıÁ¿ÊÇ£º"+queue.size());  
+                System.out.println("Consumer2  ä»é˜Ÿåˆ—ä¸­å–å‡ºä¸€ä¸ªå…ƒç´ ï¼Œé˜Ÿåˆ—å‰©ä½™æ•°é‡æ˜¯ï¼š"+queue.size());  
                 produce.signal();  
                 try {  
                     Thread.sleep(100);  

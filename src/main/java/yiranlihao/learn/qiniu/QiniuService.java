@@ -58,7 +58,7 @@ public class QiniuService {
 	private String domain;
 	
 	public QiniuService() {
-		//³õÊ¼»¯domain
+		//åˆå§‹åŒ–domain
 		Map<String,Object> mapTypes = JSON.parseObject(domainJson);
 		String domains = (String) mapTypes.get(bucketName);
 		Map<String, Object> domainMap = JSON.parseObject(domains);
@@ -72,11 +72,11 @@ public class QiniuService {
 	public void setBucketName(String bucketName){
 		this.bucketName = bucketName;
 	}
-	// ÉèÖÃAccessKey
+	// è®¾ç½®AccessKey
 	public void setAccessKey(String key) {
 		Config.ACCESS_KEY = key;
 	}
-	// ÉèÖÃSecretKey
+	// è®¾ç½®SecretKey
 	public void setSecretKey(String key) {
 		Config.SECRET_KEY = key;
 	}
@@ -84,22 +84,22 @@ public class QiniuService {
 		Config.UP_HOST = host;
 	}
 	
-	// SSLÏà¹Ø²ÎÊı
+	// SSLç›¸å…³å‚æ•°
 	private static PoolingHttpClientConnectionManager connMgr;
 	private static RequestConfig requestConfig;
 
-	// Í¨¹ıÎÄ¼şÂ·¾¶ÉÏ´«ÎÄ¼ş
+	// é€šè¿‡æ–‡ä»¶è·¯å¾„ä¸Šä¼ æ–‡ä»¶
 	public boolean uploadFile(String localFile) throws AuthException, JSONException {
 		File file = new File(localFile);
 		return uploadFile(file);
 	}
 
-	// Í¨¹ıFileÉÏ´«
+	// é€šè¿‡Fileä¸Šä¼ 
 	public boolean uploadFile(File file) throws AuthException, JSONException {
 		String uptoken = getUpToken();
-		// ¿ÉÑ¡µÄÉÏ´«Ñ¡Ïî£¬¾ßÌåËµÃ÷Çë²Î¼ûÊ¹ÓÃÊÖ²á¡£
+		// å¯é€‰çš„ä¸Šä¼ é€‰é¡¹ï¼Œå…·ä½“è¯´æ˜è¯·å‚è§ä½¿ç”¨æ‰‹å†Œã€‚
 		PutExtra extra = new PutExtra();
-		// ÉÏ´«ÎÄ¼ş
+		// ä¸Šä¼ æ–‡ä»¶
 		PutRet ret = IoApi.putFile(uptoken, file.getName(), file.getAbsolutePath(), extra);
 		if (ret.ok()) {
 			return true;
@@ -113,14 +113,14 @@ public class QiniuService {
 		boolean result = false;
 		try {
 			CloseableHttpClient httpclient = HttpClients.custom().setSSLSocketFactory(createSSLConnSocketFactory())
-					.setConnectionManager(connMgr).setDefaultRequestConfig(requestConfig).build();// ´Ë·½·¨ÓÃÓÚhttpsÇëÇó
-			// ´´½¨httpget.
+					.setConnectionManager(connMgr).setDefaultRequestConfig(requestConfig).build();// æ­¤æ–¹æ³•ç”¨äºhttpsè¯·æ±‚
+			// åˆ›å»ºhttpget.
 			HttpGet httpget = new HttpGet(fileURL);
 			httpget.setConfig(requestConfig);
 			//System.out.println("executing request " + httpget.getURI());
-			// Ö´ĞĞgetÇëÇó.
+			// æ‰§è¡Œgetè¯·æ±‚.
 			CloseableHttpResponse response = httpclient.execute(httpget);
-			// »ñÈ¡ÏìÓ¦ÊµÌå
+			// è·å–å“åº”å®ä½“
 			HttpEntity entity = response.getEntity();
 
 			if (entity != null) {
@@ -130,13 +130,13 @@ public class QiniuService {
 //				FileOutputStream output = new FileOutputStream(storeFile);
 //				entity.writeTo(output);
 //				output.close();
-				logger.info("³É¹¦´ÓÔ¶³Ì·şÎñÆ÷ÄÃµ½Í¼Æ¬ÎÄ¼ş£¬ÉÏ´«µ½ÆßÅ£·şÎñÆ÷....");
+				logger.info("æˆåŠŸä»è¿œç¨‹æœåŠ¡å™¨æ‹¿åˆ°å›¾ç‰‡æ–‡ä»¶ï¼Œä¸Šä¼ åˆ°ä¸ƒç‰›æœåŠ¡å™¨....");
 				result = uploadFile(fileName, entity.getContent());
-				// Ê¶±ğÍê³ÉÖ®ºó£¬É¾³ı±¾µØ´æ´¢µÄÍ¼ÏñÎÄ¼ş
+				// è¯†åˆ«å®Œæˆä¹‹åï¼Œåˆ é™¤æœ¬åœ°å­˜å‚¨çš„å›¾åƒæ–‡ä»¶
 				//storeFile.delete();
 
 			} else {
-				logger.error("´ÓÔ¶³Ì·şÎñÆ÷»ñÈ¡Í¼Æ¬ÎÄ¼şÊ§°Ü£¬Çë¼ì²éÍ¼Æ¬URLÊÇ·ñÕıÈ·....");
+				logger.error("ä»è¿œç¨‹æœåŠ¡å™¨è·å–å›¾ç‰‡æ–‡ä»¶å¤±è´¥ï¼Œè¯·æ£€æŸ¥å›¾ç‰‡URLæ˜¯å¦æ­£ç¡®....");
 			}
 		} catch (Exception e) {
 			logger.error(e.getMessage(),e);
@@ -148,14 +148,14 @@ public class QiniuService {
 		String result = fileURL;
 		try {
 			CloseableHttpClient httpclient = HttpClients.custom().setSSLSocketFactory(createSSLConnSocketFactory())
-					.setConnectionManager(connMgr).setDefaultRequestConfig(requestConfig).build();// ´Ë·½·¨ÓÃÓÚhttpsÇëÇó
-			// ´´½¨httpget.
+					.setConnectionManager(connMgr).setDefaultRequestConfig(requestConfig).build();// æ­¤æ–¹æ³•ç”¨äºhttpsè¯·æ±‚
+			// åˆ›å»ºhttpget.
 			HttpGet httpget = new HttpGet(fileURL);
 			httpget.setConfig(requestConfig);
 			//System.out.println("executing request " + httpget.getURI());
-			// Ö´ĞĞgetÇëÇó.
+			// æ‰§è¡Œgetè¯·æ±‚.
 			CloseableHttpResponse response = httpclient.execute(httpget);
-			// »ñÈ¡ÏìÓ¦ÊµÌå
+			// è·å–å“åº”å®ä½“
 			HttpEntity entity = response.getEntity();
 
 			if (entity != null) {
@@ -166,17 +166,17 @@ public class QiniuService {
 //				FileOutputStream output = new FileOutputStream(storeFile);
 //				entity.writeTo(output);
 //				output.close();
-				logger.info("³É¹¦´ÓÔ¶³Ì·şÎñÆ÷ÄÃµ½Í¼Æ¬ÎÄ¼ş£¬ÉÏ´«µ½ÆßÅ£·şÎñÆ÷....");
+				logger.info("æˆåŠŸä»è¿œç¨‹æœåŠ¡å™¨æ‹¿åˆ°å›¾ç‰‡æ–‡ä»¶ï¼Œä¸Šä¼ åˆ°ä¸ƒç‰›æœåŠ¡å™¨....");
 				boolean flag = uploadFile(fileName, entity.getContent());
-				// Ê¶±ğÍê³ÉÖ®ºó£¬É¾³ı±¾µØ´æ´¢µÄÍ¼ÏñÎÄ¼ş
+				// è¯†åˆ«å®Œæˆä¹‹åï¼Œåˆ é™¤æœ¬åœ°å­˜å‚¨çš„å›¾åƒæ–‡ä»¶
 				//storeFile.delete();
 				if(flag){
-					//ÉÏ´«³É¹¦¡£·µ»ØµØÖ·
+					//ä¸Šä¼ æˆåŠŸã€‚è¿”å›åœ°å€
 					String filePath = getDownloadFileUrl(fileName);
 					result = filePath.substring(0, filePath.lastIndexOf("?"));
 				}
 			} else {
-				logger.error("´ÓÔ¶³Ì·şÎñÆ÷»ñÈ¡Í¼Æ¬ÎÄ¼şÊ§°Ü£¬Çë¼ì²éÍ¼Æ¬URLÊÇ·ñÕıÈ·....");
+				logger.error("ä»è¿œç¨‹æœåŠ¡å™¨è·å–å›¾ç‰‡æ–‡ä»¶å¤±è´¥ï¼Œè¯·æ£€æŸ¥å›¾ç‰‡URLæ˜¯å¦æ­£ç¡®....");
 			}
 		} catch (Exception e) {
 			logger.error(e.getMessage(),e);
@@ -185,20 +185,20 @@ public class QiniuService {
 	}
 
 	/**
-	 * ´Ó inputstream ÖĞĞ´ÈëÆßÅ£
-	 * @param key ÎÄ¼şÃû
-	 * @param content ÒªĞ´ÈëµÄÄÚÈİ
+	 * ä» inputstream ä¸­å†™å…¥ä¸ƒç‰›
+	 * @param key æ–‡ä»¶å
+	 * @param content è¦å†™å…¥çš„å†…å®¹
 	 * @return
 	 * @throws AuthException
 	 * @throws JSONException
 	 */
 	public boolean uploadFile(String key, String content) throws AuthException, JSONException {
-		// ¶ÁÈ¡µÄÊ±ºò°´µÄ¶ş½øÖÆ£¬ËùÒÔÕâÀïÒªÍ¬Ò»
+		// è¯»å–çš„æ—¶å€™æŒ‰çš„äºŒè¿›åˆ¶ï¼Œæ‰€ä»¥è¿™é‡Œè¦åŒä¸€
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(content.getBytes());
 		String uptoken = getUpToken();
-		// ¿ÉÑ¡µÄÉÏ´«Ñ¡Ïî£¬¾ßÌåËµÃ÷Çë²Î¼ûÊ¹ÓÃÊÖ²á¡£
+		// å¯é€‰çš„ä¸Šä¼ é€‰é¡¹ï¼Œå…·ä½“è¯´æ˜è¯·å‚è§ä½¿ç”¨æ‰‹å†Œã€‚
 		PutExtra extra = new PutExtra();
-		// ÉÏ´«ÎÄ¼ş
+		// ä¸Šä¼ æ–‡ä»¶
 		PutRet ret = IoApi.Put(uptoken, key, inputStream, extra);
 		if (ret.ok()) {
 			return true;
@@ -208,19 +208,19 @@ public class QiniuService {
 	}
 
 	/**
-	 * ´Ó inputstream ÖĞĞ´ÈëÆßÅ£
-	 * @param key ÎÄ¼şÃû
-	 * @param content ÒªĞ´ÈëµÄÄÚÈİ
+	 * ä» inputstream ä¸­å†™å…¥ä¸ƒç‰›
+	 * @param key æ–‡ä»¶å
+	 * @param content è¦å†™å…¥çš„å†…å®¹
 	 * @return
 	 * @throws AuthException
 	 * @throws JSONException
 	 */
 	public boolean uploadFile(String key, InputStream inputStream) throws AuthException, JSONException {
-		// ¶ÁÈ¡µÄÊ±ºò°´µÄ¶ş½øÖÆ£¬ËùÒÔÕâÀïÒªÍ¬Ò»
+		// è¯»å–çš„æ—¶å€™æŒ‰çš„äºŒè¿›åˆ¶ï¼Œæ‰€ä»¥è¿™é‡Œè¦åŒä¸€
 		String uptoken = getUpToken();
-		// ¿ÉÑ¡µÄÉÏ´«Ñ¡Ïî£¬¾ßÌåËµÃ÷Çë²Î¼ûÊ¹ÓÃÊÖ²á¡£
+		// å¯é€‰çš„ä¸Šä¼ é€‰é¡¹ï¼Œå…·ä½“è¯´æ˜è¯·å‚è§ä½¿ç”¨æ‰‹å†Œã€‚
 		PutExtra extra = new PutExtra();
-		// ÉÏ´«ÎÄ¼ş
+		// ä¸Šä¼ æ–‡ä»¶
 		PutRet ret = IoApi.Put(uptoken, key, inputStream, extra);
 
 		if (ret.ok()) {
@@ -230,7 +230,7 @@ public class QiniuService {
 		}
 	}
 	
-	// »ñµÃÏÂÔØµØÖ·
+	// è·å¾—ä¸‹è½½åœ°å€
 	public String getDownloadFileUrl(String filename) throws Exception {
 		Mac mac = getMac();
 		String baseUrl = URLUtils.makeBaseUrl(domain, filename);
@@ -239,14 +239,14 @@ public class QiniuService {
 		return downloadUrl;
 	}
 
-	// É¾³ıÎÄ¼ş
+	// åˆ é™¤æ–‡ä»¶
 	public void deleteFile(String filename) {
 		Mac mac = getMac();
 		RSClient client = new RSClient(mac);
 		client.delete(domain, filename);
 	}
 
-	// »ñÈ¡Æ¾Ö¤
+	// è·å–å‡­è¯
 	private String getUpToken() throws AuthException, JSONException {
 		Mac mac = getMac();
 		PutPolicy putPolicy = new PutPolicy(bucketName);
@@ -259,7 +259,7 @@ public class QiniuService {
 		return mac;
 	}
 
-	// ´´½¨SSL°²È«Á¬½Ó
+	// åˆ›å»ºSSLå®‰å…¨è¿æ¥
 	private static SSLConnectionSocketFactory createSSLConnSocketFactory() {
 		SSLConnectionSocketFactory sslsf = null;
 		try {

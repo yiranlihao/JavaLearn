@@ -43,13 +43,13 @@ public class ShardedJedisPoolService {
 			}
 
 			if (shards.isEmpty()) {
-				throw new IllegalArgumentException("Á¬½Ó³ØÖĞÃ»ÓĞredisÊµÀı");
+				throw new IllegalArgumentException("è¿æ¥æ± ä¸­æ²¡æœ‰rediså®ä¾‹");
 			} else {
 				pool = new ShardedJedisPool(e, shards);
 			}
 		} catch (Exception arg9) {
 			arg9.printStackTrace(); 
-			throw new IllegalArgumentException("³õÊ¼»¯Ê§°Ü¡£¡£" + arg9.getMessage());
+			throw new IllegalArgumentException("åˆå§‹åŒ–å¤±è´¥ã€‚ã€‚" + arg9.getMessage());
 		}
 	}
 

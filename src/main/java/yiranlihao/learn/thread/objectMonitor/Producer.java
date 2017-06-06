@@ -13,25 +13,25 @@ public class Producer implements Runnable {
     public void product(){  
         while(true){  
             synchronized (queue) {  
-                System.out.println("Producer  µ±Ç°¶ÓÁĞÖĞÊı¾İÊıÁ¿ÊÇ£º"+queue.size());  
-                while(queue.size()==queueSize){//¶ÔÓÚÉú²úÕßÀ´ËµĞèÒªÅĞ¶ÏµÄÊÇ¶ÓÁĞÊÇ·ñÂúÁË£¬Èç¹ûÂúÁË¾ÍµÈ´ı  
-                    System.out.println("Producer  ¶ÓÁĞÒÑÂú£¬µÈ´ıÏû·ÑÕßÏû·Ñ....");  
+                System.out.println("Producer  å½“å‰é˜Ÿåˆ—ä¸­æ•°æ®æ•°é‡æ˜¯ï¼š"+queue.size());  
+                while(queue.size()==queueSize){//å¯¹äºç”Ÿäº§è€…æ¥è¯´éœ€è¦åˆ¤æ–­çš„æ˜¯é˜Ÿåˆ—æ˜¯å¦æ»¡äº†ï¼Œå¦‚æœæ»¡äº†å°±ç­‰å¾…  
+                    System.out.println("Producer  é˜Ÿåˆ—å·²æ»¡ï¼Œç­‰å¾…æ¶ˆè´¹è€…æ¶ˆè´¹....");  
                     try {  
                         queue.wait();  
                     } catch (InterruptedException e) {  
                         e.printStackTrace();  
-                        queue.notify(); //ÕâÀïÎªÊ²Ã´¼Ó¸önotifyÄØ£¿ÊÇÎªÁË·ÀÖ¹ËÀËø£¬Ïß³Ì³öÏÖÎÊÌâÊ±£¬Ò²ÒªÊÍ·Å¶ÔÏóËø¡£  
+                        queue.notify(); //è¿™é‡Œä¸ºä»€ä¹ˆåŠ ä¸ªnotifyå‘¢ï¼Ÿæ˜¯ä¸ºäº†é˜²æ­¢æ­»é”ï¼Œçº¿ç¨‹å‡ºç°é—®é¢˜æ—¶ï¼Œä¹Ÿè¦é‡Šæ”¾å¯¹è±¡é”ã€‚  
                     }  
                 }  
-                //Èç¹û¶ÓÁĞÃ»Âú£¬ÄÇÃ´¾ÍÍù¶ÓÁĞÖĞ¼ÓÈëÊı¾İ  
+                //å¦‚æœé˜Ÿåˆ—æ²¡æ»¡ï¼Œé‚£ä¹ˆå°±å¾€é˜Ÿåˆ—ä¸­åŠ å…¥æ•°æ®  
                 queue.offer(1);  
                 queue.notify();  
                 try {  
-                    Thread.sleep(100);  //ÎªÊ²Ã´¼Ó¸öĞİÃß£¿ÊÇÎªÁËÈÃÎÒÃÇ¿ÉÒÔÔÚ¿ØÖÆÌ¨¿´µ½Éú²úÕßºÍÏû·ÑÕß½»ÌæÖ´ĞĞ  
+                    Thread.sleep(100);  //ä¸ºä»€ä¹ˆåŠ ä¸ªä¼‘çœ ï¼Ÿæ˜¯ä¸ºäº†è®©æˆ‘ä»¬å¯ä»¥åœ¨æ§åˆ¶å°çœ‹åˆ°ç”Ÿäº§è€…å’Œæ¶ˆè´¹è€…äº¤æ›¿æ‰§è¡Œ  
                 } catch (InterruptedException e) {  
                     e.printStackTrace();  
                 }  
-                System.out.println("Producer  Ïò¶ÓÁĞÖĞ²åÈëÒ»¸öÊı¾İ£¬¶ÓÁĞÖĞÊ£Óà¿Õ¼äÊÇ£º"+(queueSize-queue.size()));  
+                System.out.println("Producer  å‘é˜Ÿåˆ—ä¸­æ’å…¥ä¸€ä¸ªæ•°æ®ï¼Œé˜Ÿåˆ—ä¸­å‰©ä½™ç©ºé—´æ˜¯ï¼š"+(queueSize-queue.size()));  
             }  
         }  
     }  

@@ -13,7 +13,7 @@ import com.alibaba.fastjson.JSON;
 import yiranlihao.learn.springmvc.entity.User;
 import yiranlihao.learn.springmvc.service.UserService;  
 
-@RunWith(SpringJUnit4ClassRunner.class)     //±íÊ¾¼Ì³ÐÁËSpringJUnit4ClassRunnerÀà  
+@RunWith(SpringJUnit4ClassRunner.class)     //è¡¨ç¤ºç»§æ‰¿äº†SpringJUnit4ClassRunnerç±»  
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})  
   
 public class TestMyBatis {  
@@ -32,14 +32,14 @@ public class TestMyBatis {
     public void test1() {  
         User user = userService.getUserById(1);
         // System.out.println(user.getUserName());  
-        // logger.info("Öµ£º"+user.getUserName());  
+        // logger.info("å€¼ï¼š"+user.getUserName());  
         logger.info(JSON.toJSONString(user));  
     } 
     @Test  
     public void test2() {  
         User user = userService.getUserById(1);
         // System.out.println(user.getUserName());  
-        // logger.info("Öµ£º"+user.getUserName());  
+        // logger.info("å€¼ï¼š"+user.getUserName());  
         logger.info(JSON.toJSONString(user));  
     }
 }  
