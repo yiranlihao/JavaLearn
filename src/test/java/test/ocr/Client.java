@@ -1,15 +1,5 @@
 package test.ocr;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.http.Consts;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
@@ -29,6 +19,11 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.CharsetUtils;
 import org.apache.http.util.EntityUtils;
 
+import java.io.*;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Client {
 
 	public static void main(String[] args) {
@@ -37,6 +32,8 @@ public class Client {
 		
 		//从七牛获取图片
 		HttpGet httpget = new HttpGet("http://7xv25h.com2.z0.glb.qiniucdn.com/files/1/image/20170324/20170323140358_1490328161046.png");
+		//HttpGet httpget = new HttpGet(URLEncoder.encode("http://cdnfile.op110.com.cn/files/1114/file/20170703/_UGXI2]WPUNJDXKCYOTV6ZF_1499061001082.png"));
+
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		try {
 			CloseableHttpResponse response = httpclient.execute(httpget);

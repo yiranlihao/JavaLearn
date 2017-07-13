@@ -1,15 +1,14 @@
 package yiranlihao.learn.qiniu;
 
-import java.io.File;
-import java.util.Map;
-
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.qiniu.api.auth.AuthException;
 import org.json.JSONException;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.qiniu.api.auth.AuthException;
+import java.io.File;
+import java.util.Map;
 
 public class QiniuTest {
 	private QiniuService qiniuService = null;
