@@ -14,14 +14,14 @@ import yiranlihao.learn.springmvc.service.UserService;
 import java.net.URL;
 
 
-@Controller  
+@Controller
 @RequestMapping("/user")  
 public class UserController {  
     @Resource  
     private UserService userService;  
       
     @RequestMapping("/showUser")  
-    public String toIndex(HttpServletRequest request,Model model){  
+    public String toIndex(HttpServletRequest request,Model model){
         int userId = Integer.parseInt(request.getParameter("id"));  
         User user = this.userService.getUserById(userId);  
         model.addAttribute("user", user);  
@@ -37,4 +37,4 @@ public class UserController {
         URL url = Filter.class.getProtectionDomain().getCodeSource().getLocation();
         System.out.println("path:"+url.getPath()+"  name:"+url.getFile());	//输出结果：path:/C:/Users/User/.m2/repository/javax/javaee-api/7.0/javaee-api-7.0.jar  name:/C:/Users/User/.m2/repository/javax/javaee-api/7.0/javaee-api-7.0.jar
     }
-}  
+}
